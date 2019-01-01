@@ -9,12 +9,14 @@ function init() {
   const frogLive1 = document.querySelector('body > div > div > div:nth-child(2)')
   const frogLive2 = document.querySelector('body > div > div > div:nth-child(3)')
   const frogLive3 = document.querySelector('body > div > div > div:nth-child(4)')
-  const frogSafe1 = document.querySelector('body > div > div > div:nth-child(8)')
-  const frogSafe2 = document.querySelector('body > div > div > div:nth-child(9)')
-  const frogSafe3 = document.querySelector('body > div > div > div:nth-child(10)')
-  const frogSafe4 = document.querySelector('body > div > div > div:nth-child(11)')
+  const frogSafe1 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(2)')
+  const frogSafe2 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(3)')
+  const frogSafe3 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(4)')
+  const frogSafe4 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(5)')
+  
   const frogLives = [frogLive1, frogLive2, frogLive3]
   const firstStart = document.querySelector('button.newStart')
+  const container2 = document.querySelector('.container2')
   const container = document.querySelector('.container')
   
   const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
@@ -108,8 +110,8 @@ function init() {
   //functions
 
   function obstacleTimer() {
+    if (gameRunning === true) {
     checkShark()
-    checkLilypad()
     car1.moveRight()
     car2.moveLeft()
     car3.moveRight()
@@ -143,8 +145,7 @@ function init() {
     croc4A.moveRight()
     croc4B.moveRight()
     checkCar()
-    checkWater()
-    grassDeath()
+    }
   }
 
   const car1 = new Car(6, 66, 'car')
@@ -280,12 +281,13 @@ function init() {
         default:
           console.log('player shouldnt move')    
       } 
+      squares.forEach(square => square.classList.remove('player'))
+      squares[playerIndex].classList.add('player')
       checkCar()
       checkWater()
       checkLilypad()
+      grassDeath()
     } 
-    squares.forEach(square => square.classList.remove('player'))
-    squares[playerIndex].classList.add('player')
   }
 
   //timer function
@@ -323,8 +325,7 @@ function init() {
   }
 
   function checkWater() {
-    //console.log(squares[playerIndex].classList.length)
-    if (squares[playerIndex].classList.contains('water') && squares[playerIndex].classList.length < 3){
+    if (squares[playerIndex].classList.contains('water') && squares[playerIndex].classList.length < 4){
       looseLife()
     }
     if (lives <= 0) {
@@ -432,7 +433,7 @@ function init() {
 
   function frogWin() {
     squares[playerIndex].classList.remove('player')
-    safeFrog[frogSaved - 1].classList.remove('safe')
+    safeFrog[frogSaved - 1].classList.remove('safe') 
     frogSaved--
     playerIndex = Math.floor((width * width) - (width / 2))
     squares[playerIndex].classList.add('player')
@@ -446,17 +447,18 @@ function init() {
   //dying and loosing lives
 
   function looseLife() {
-    squares[playerIndex].classList.add('deadFrog')
+    gameRunning = false
     squares[playerIndex].classList.remove('player')
+    squares[playerIndex].classList.add('deadFrog')
     setTimeout(wait, 500)
     function wait() {
-      squares[playerIndex].classList.remove('deadFrog')
       squares[playerIndex].classList.remove('player')
       frogLives[lives - 1].classList.remove('life')
+      squares[playerIndex].classList.remove('deadFrog')
       lives--
       playerIndex = Math.floor((width * width) - (width / 2))
       squares[playerIndex].classList.add('player')
-
+      gameRunning = true
       if (lives === -1) {
         reset()
       }  
@@ -464,8 +466,11 @@ function init() {
   }
     
   function firstPlay() {
+    
     firstStart.style.display = 'none'
     container.style.display = 'flex'
+    container2.style.display = 'none'
+    document.body.style.backgroundColor = '#f1f7e4'
     play()
 
   }
