@@ -43,10 +43,14 @@ div.grid-item.car {
   background-image: url('../assets/car.png');
   background-repeat: no-repeat;
   background-size: contain;
-  
-
-
 }
+
+div.grid-item.log {
+  background-image: url('../assets/Log.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 
 
 

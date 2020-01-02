@@ -3,16 +3,30 @@ function init() {
   //dom variables
   const grid = document.querySelector(' .grid')
   const squares = []
-  console.log('hello')
+  
 
 
   //game variables
   const width = 11
   let playerIndex = Math.floor(width * width / 2)
   let carStart = 88
+  const gameRunning = true
 
   //functions
 
+  //THIS FUNCTION MOVES THE CAR ALONG
+  function moveCar() {
+    squares[carStart].classList.remove('car')
+    if (carStart === 98) {
+      carStart = carStart - 10
+    } else {
+      carStart++
+    }
+    squares[carStart].classList.add('car')
+  }
+  setInterval(moveCar, 500)
+
+  //THIS FUNCTION IS THE GRID AND HAS ADDED CLASSES TO THE CAR AND PLAYER
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
     const square = document.createElement('div') //this makes 121 divs
     square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' (which has already been styled in css)
@@ -22,10 +36,11 @@ function init() {
   //place the player at the starting point when the grid has been built
   squares[playerIndex].classList.add('player')
 
-  carStart.forEach(position => {
-    squares[position].classList.add('car')
-  })
+  
+  squares[carStart].classList.add('car')
+  
 
+  //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
   function handleKeyDown(e) {
     switch (e.keyCode) {
       case 39: 
@@ -55,6 +70,9 @@ function init() {
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
   }
+
+
+
 
   //event handlers
   window.addEventListener('keydown', handleKeyDown)
