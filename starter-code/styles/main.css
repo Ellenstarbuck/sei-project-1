@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+main {
+  max-width: 600px;
+  flex-basis: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}  
+
+div.grid {
+  width: 440px;
+  height: 440px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: aqua;
+}
+
+div.grid-item {
+  width: 40px;
+  height: 40px;
+  border: 1px dashed black;
+}
+
+div.grid-item.player {
+  background-image: url('../assets/frogsprite.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+div.grid-item.car {
+  background-image: url('../assets/car.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+
+
+}
+
+
+
+div.panel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+  
+
+}
+
