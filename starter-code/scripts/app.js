@@ -8,9 +8,11 @@ function init() {
 
   //game variables
   const width = 11
-  let playerIndex = Math.floor(width * width / 2)
+  let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
   let carStart = 88
+  let logStart = 11
   const gameRunning = true
+
 
   //functions
 
@@ -26,6 +28,26 @@ function init() {
   }
   setInterval(moveCar, 500)
 
+  //THIS FUNCTION MOVES THE LOG ALONG
+
+  function moveLog() {
+    squares[logStart].classList.remove('log')
+    squares[logStart + 1].classList.remove('log')
+    squares[logStart + 2].classList.remove('log')
+    if (logStart === 21) {
+      logStart = logStart - 10
+    } else {
+      logStart++
+    }
+    squares[logStart].classList.add('log')
+    squares[logStart + 1].classList.add('log')
+    squares[logStart + 2].classList.add('log')
+  }
+  setInterval(moveLog, 500)
+
+
+
+
   //THIS FUNCTION IS THE GRID AND HAS ADDED CLASSES TO THE CAR AND PLAYER
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
     const square = document.createElement('div') //this makes 121 divs
@@ -36,8 +58,13 @@ function init() {
   //place the player at the starting point when the grid has been built
   squares[playerIndex].classList.add('player')
 
-  
+  //places the car on the grid
   squares[carStart].classList.add('car')
+
+  //places the log on the grid
+  squares[logStart].classList.add('log')
+  squares[logStart + 1].classList.add('log')
+  squares[logStart + 2].classList.add('log')
   
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
