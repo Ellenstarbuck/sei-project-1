@@ -38,6 +38,7 @@ div.grid-item.player {
   background-image: url('../assets/frogsprite.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom;
 }
 
 div.grid-item.car {
@@ -46,10 +47,83 @@ div.grid-item.car {
   background-size: contain;
 }
 
-div.grid-item.log {
-  background-image: url('../assets/Log.png');
+div.grid-item.car2 {
+  background-image: url('../assets/car2.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+div.grid-item.crockA {
+  background-image: url('../assets/crockA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scaleX(-1);
+}
+
+div.grid-item.crockB {
+  background-image: url('../assets/crockB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scaleX(-1);
+}
+
+div.grid-item.crock2A {
+  background-image: url('../assets/crockA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+div.grid-item.crock2B {
+  background-image: url('../assets/crockB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
+div.grid-item.sharkA {
+  background-image: url('../assets/SharkA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+div.grid-item.sharkB {
+  background-image: url('../assets/SharkB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+div.grid-item.sharkC {
+  background-image: url('../assets/SharkC.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+div.grid-item.shark2A {
+  background-image: url('../assets/SharkA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
+}
+
+div.grid-item.shark2B {
+  background-image: url('../assets/SharkB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
+}
+
+div.grid-item.shark2C {
+  background-image: url('../assets/SharkC.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
 }
 
 div.grid-item.lilypad {

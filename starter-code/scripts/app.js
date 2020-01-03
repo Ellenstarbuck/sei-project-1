@@ -3,6 +3,8 @@ function init() {
   //dom variables
   const grid = document.querySelector(' .grid')
   const squares = []
+  const startBtn = document.querySelector('button.start')
+  const resetBtn = document.querySelector('button.reset')
   
 
 
@@ -12,7 +14,7 @@ function init() {
   //let carStart = 88
   let logStart = 11
   let lilypad = 2
-  const gameRunning = true
+  let gameRunning = true
 
 
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
@@ -22,6 +24,16 @@ function init() {
     grid.appendChild(square) //'this attaches them to the square
   }) 
   
+  //function
+
+  function play() {
+    gameRunning = true
+    obstacleTimer()
+  }
+
+  function reset() {
+    gameRunning = false
+  }
 
 
   //objects
@@ -61,19 +73,63 @@ function init() {
     }
   }
 
-  function obstacleTimer() {
-    car1.moveRight()
-    car2.moveRight()
-    car3.moveRight()
-    car4.moveLeft()
+  class Log extends Obstacle {
+    constructor (line, current, image) {
+      super(line, current, image)
+    }
   }
 
-  const car1 = new Car(8, 88, 'car')
-  const car2 = new Car(7, 77, 'car')
-  const car3 = new Car(7, 80, 'car')
-  const car4 = new Car(6, 76, 'car')
+  function obstacleTimer() {
+    car1.moveRight()
+    car2.moveLeft()
+    car3.moveRight()
+    car4.moveLeft()
+    car5.moveRight()
+    car6.moveLeft()
+    car7.moveRight()
+    car8.moveLeft()
+    sharkA.moveLeft()
+    sharkB.moveLeft()
+    sharkC.moveLeft()
+    sharkD.moveRight()
+    sharkE.moveRight()
+    sharkF.moveRight()
+    crocA.moveLeft()
+    crocB.moveLeft()
+    crocC.moveRight()
+    crocD.moveRight()
+  }
 
-  //setInterval(moveRight, 500)
+  //where the obstacle vars are
+  //cars
+  const car1 = new Car(6, 66, 'car')
+  const car2 = new Car(7, 87, 'car2')
+  const car3 = new Car(8, 88, 'car')
+  const car4 = new Car(9, 109, 'car2')
+  const car5 = new Car(6, 69, 'car')
+  const car6 = new Car(7,84, 'car2')
+  const car7 = new Car(8, 91, 'car')
+  const car8 = new Car(9, 106, 'car2')
+
+  //logs
+  //log one
+  const sharkA = new Log(1, 11, 'sharkA')
+  const sharkB = new Log(1, 12,'sharkB')
+  const sharkC = new Log(1, 13, 'sharkC')
+  //log two
+  const sharkD = new Log(2, 32, 'shark2A')
+  const sharkE = new Log(2, 31,'shark2B')
+  const sharkF = new Log(2, 30, 'shark2C')
+  //crocs one
+  const crocA = new Log(1, 17, 'crockA')
+  const crocB = new Log(1, 18, 'crockB')
+  //cros two
+  const crocC = new Log(2, 26, 'crock2B')
+  const crocD = new Log(2, 27, 'crock2A')
+  
+
+
+
 
   setInterval(obstacleTimer, 500)
  
@@ -95,20 +151,20 @@ function init() {
 
   //THIS FUNCTION MOVES THE LOG ALONG
 
-  function moveLog() {
-    squares[logStart].classList.remove('log')
-    squares[logStart + 1].classList.remove('log')
-    squares[logStart + 2].classList.remove('log')
-    if (logStart === 21) {
-      logStart = logStart - 10
-    } else {
-      logStart++
-    }
-    squares[logStart].classList.add('log')
-    squares[logStart + 1].classList.add('log')
-    squares[logStart + 2].classList.add('log')
-  }
-  setInterval(moveLog, 500)
+  //function moveLog() {
+  //  squares[logStart].classList.remove('log')
+  //  squares[logStart + 1].classList.remove('log')
+  //  squares[logStart + 2].classList.remove('log')
+  //  if (logStart === 21) {
+  //    logStart = logStart - 10
+  //  } else {
+  //    logStart++
+  //  }
+  //  squares[logStart].classList.add('log')
+  //  squares[logStart + 1].classList.add('log')
+  //  squares[logStart + 2].classList.add('log')
+  //}
+  //setInterval(moveLog, 500)
 
 
 
@@ -167,6 +223,11 @@ function init() {
 
   //event handlers
   window.addEventListener('keydown', handleKeyDown)
+
+  startBtn.addEventListener('click', play)
+  console.log(startBtn)
+  resetBtn.addEventListener('click', reset)
+
   
 
 
