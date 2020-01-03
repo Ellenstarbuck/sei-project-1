@@ -10,13 +10,14 @@ html, body {
 
 main {
   max-width: 600px;
-  flex-basis: 100%;
+  
+  
 }
 
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }  
 
 div.grid {
@@ -51,15 +52,31 @@ div.grid-item.log {
   background-size: contain;
 }
 
-
+div.grid-item.lilypad {
+  background-image: url('../assets/lilypad.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
 
 
 div.panel {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  margin-top: 30px;
   margin-bottom: 30px;
-  
-
 }
 
+button.reset {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+h2 {
+  display: flex;
+  background-color: aqua;
+  flex-direction: column;
+  align-items: flex-end;
+}

@@ -11,6 +11,7 @@ function init() {
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
   let carStart = 88
   let logStart = 11
+  let lilypad = 2
   const gameRunning = true
 
 
@@ -65,6 +66,11 @@ function init() {
   squares[logStart].classList.add('log')
   squares[logStart + 1].classList.add('log')
   squares[logStart + 2].classList.add('log')
+
+  //places the lilypad's on the grid
+  squares[lilypad].classList.add('lilypad')
+  squares[lilypad + 3].classList.add('lilypad')
+  squares[lilypad + 6].classList.add('lilypad')
   
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
