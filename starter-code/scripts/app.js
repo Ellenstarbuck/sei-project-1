@@ -9,25 +9,89 @@ function init() {
   //game variables
   const width = 11
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
-  let carStart = 88
+  //let carStart = 88
   let logStart = 11
   let lilypad = 2
   const gameRunning = true
 
 
-  //functions
+  Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
+    const square = document.createElement('div') //this makes 121 divs
+    square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' (which has already been styled in css)
+    squares.push(square) //push squares into the array so that we can manipulate each square individually as we know there index number
+    grid.appendChild(square) //'this attaches them to the square
+  }) 
+  
 
-  //THIS FUNCTION MOVES THE CAR ALONG
-  function moveCar() {
-    squares[carStart].classList.remove('car')
-    if (carStart === 98) {
-      carStart = carStart - 10
-    } else {
-      carStart++
+
+  //objects
+
+  class Obstacle {
+    constructor (line, current, image) {
+      this.line = line
+      this.current = current
+      this.image = image
+      squares[this.current].classList.add(this.image)
     }
-    squares[carStart].classList.add('car')
+    moveRight() {
+      squares[this.current].classList.remove(this.image)
+      if (this.current === (this.line * width) + (width - 1)) {
+        this.current = this.current - 10
+      } else {
+        this.current++
+      }
+      squares[this.current].classList.add(this.image)
+    }
+
+    moveLeft() {
+      squares[this.current].classList.remove(this.image)
+      if (this.current === (this.line * width)) {
+        this.current = this.current + 10
+      } else {
+        this.current--
+      }
+      squares[this.current].classList.add(this.image)
+    }
+
   }
-  setInterval(moveCar, 500)
+
+  class Car extends Obstacle {
+    constructor (line, current, image) {
+      super(line, current, image)
+    }
+  }
+
+  function obstacleTimer() {
+    car1.moveRight()
+    car2.moveRight()
+    car3.moveRight()
+    car4.moveLeft()
+  }
+
+  const car1 = new Car(8, 88, 'car')
+  const car2 = new Car(7, 77, 'car')
+  const car3 = new Car(7, 80, 'car')
+  const car4 = new Car(6, 76, 'car')
+
+  //setInterval(moveRight, 500)
+
+  setInterval(obstacleTimer, 500)
+ 
+ 
+ 
+ //functions
+
+ // //THIS FUNCTION MOVES THE CAR ALONG
+ // function moveCar() {
+ //   squares[carStart].classList.remove('car')
+ //   if (carStart === 98) {
+ //     carStart = carStart - 10
+ //   } else {
+ //     carStart++
+ //   }
+ //   squares[carStart].classList.add('car')
+ // }
+ // setInterval(moveCar, 500)
 
   //THIS FUNCTION MOVES THE LOG ALONG
 
@@ -49,18 +113,12 @@ function init() {
 
 
 
-  //THIS FUNCTION IS THE GRID AND HAS ADDED CLASSES TO THE CAR AND PLAYER
-  Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
-    const square = document.createElement('div') //this makes 121 divs
-    square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' (which has already been styled in css)
-    squares.push(square) //push squares into the array so that we can manipulate each square individually as we know there index number
-    grid.appendChild(square) //'this attaches them to the square
-  }) 
+ 
   //place the player at the starting point when the grid has been built
   squares[playerIndex].classList.add('player')
 
   //places the car on the grid
-  squares[carStart].classList.add('car')
+  //squares[carStart].classList.add('car')
 
   //places the log on the grid
   squares[logStart].classList.add('log')
