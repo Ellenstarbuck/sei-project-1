@@ -81,6 +81,8 @@ function init() {
     }
   }
 
+  //functions
+  
   function obstacleTimer() {
     car1.moveRight()
     car2.moveLeft()
