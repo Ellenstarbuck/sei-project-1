@@ -5,7 +5,13 @@ function init() {
   const squares = []
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
+  const timer = document.querySelector('.timer')
   
+  //timers
+  let obstacleTimerId = null 
+
+  let timerId = null 
+  let timeRemaining = 60
 
 
   //game variables
@@ -14,7 +20,10 @@ function init() {
   //let carStart = 88
   let logStart = 11
   let lilypad = 2
-  let gameRunning = true
+  let gameRunning = false
+  //where the obstacle vars are
+  //cars
+  
 
 
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
@@ -26,14 +35,7 @@ function init() {
   
   //function
 
-  function play() {
-    gameRunning = true
-    obstacleTimer()
-  }
-
-  function reset() {
-    gameRunning = false
-  }
+  
 
 
   //objects
@@ -100,8 +102,6 @@ function init() {
     crocD.moveRight()
   }
 
-  //where the obstacle vars are
-  //cars
   const car1 = new Car(6, 66, 'car')
   const car2 = new Car(7, 87, 'car2')
   const car3 = new Car(8, 88, 'car')
@@ -127,48 +127,6 @@ function init() {
   const crocC = new Log(2, 26, 'crock2B')
   const crocD = new Log(2, 27, 'crock2A')
   
-
-
-
-
-  setInterval(obstacleTimer, 500)
- 
- 
- 
- //functions
-
- // //THIS FUNCTION MOVES THE CAR ALONG
- // function moveCar() {
- //   squares[carStart].classList.remove('car')
- //   if (carStart === 98) {
- //     carStart = carStart - 10
- //   } else {
- //     carStart++
- //   }
- //   squares[carStart].classList.add('car')
- // }
- // setInterval(moveCar, 500)
-
-  //THIS FUNCTION MOVES THE LOG ALONG
-
-  //function moveLog() {
-  //  squares[logStart].classList.remove('log')
-  //  squares[logStart + 1].classList.remove('log')
-  //  squares[logStart + 2].classList.remove('log')
-  //  if (logStart === 21) {
-  //    logStart = logStart - 10
-  //  } else {
-  //    logStart++
-  //  }
-  //  squares[logStart].classList.add('log')
-  //  squares[logStart + 1].classList.add('log')
-  //  squares[logStart + 2].classList.add('log')
-  //}
-  //setInterval(moveLog, 500)
-
-
-
-
  
   //place the player at the starting point when the grid has been built
   squares[playerIndex].classList.add('player')
@@ -189,6 +147,7 @@ function init() {
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
   function handleKeyDown(e) {
+   if (gameRunning === true) {
     switch (e.keyCode) {
       case 39: 
         if (playerIndex % width < width - 1) {
@@ -211,19 +170,63 @@ function init() {
         }
         break  
       default:
-        console.log('player shouldnt move')  
-      
-    }
+        console.log('player shouldnt move')    
+    } 
+    } 
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
   }
 
+  //timer function
 
+  function startTimer() {
+    if (timeRemaining < 0) { 
+      reset() 
+    } else {
+      timer.innerHTML = timeRemaining 
+      timeRemaining-- 
+    }
+  }
+  
+  
+  
 
+  //start the game
+  function play() {
+    if (gameRunning === false) {
+      obstacleTimerId = setInterval(obstacleTimer, 500)
+      gameRunning = true
+      startTimer()
+      timerId = setInterval(startTimer,200)
+      startBtn.style.display = 'none' 
+      resetBtn.style.display = 'block'
+
+    }
+  }
+  //reset the game
+  function reset() {
+    finishGame()
+    clearInterval(obstacleTimerId)
+    gameRunning = false
+    timerId = null 
+    timeRemaining = 60
+    timer.innerHTML = timeRemaining
+    startBtn.style.display = 'block' 
+    resetBtn.style.display = 'none'
+
+    //needs to move player back to the start
+    //needs to reset the timer 
+  }
+
+  function finishGame() {
+    clearInterval(timerId)
+
+  }
 
   //event handlers
   window.addEventListener('keydown', handleKeyDown)
 
+  //start button and reset button
   startBtn.addEventListener('click', play)
   console.log(startBtn)
   resetBtn.addEventListener('click', reset)
