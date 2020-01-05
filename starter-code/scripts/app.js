@@ -6,8 +6,13 @@ function init() {
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
   const timer = document.querySelector('.timer')
-  const frogLive1 = document.querySelector('.live1')
-  const frogLive2 = document.querySelector('.live2')
+  const frogLive1 = document.querySelector('body > div > div > div:nth-child(1)')
+  const frogLive2 = document.querySelector('body > div > div > div:nth-child(2)')
+
+
+  const frogLives = [frogLive1, frogLive2]
+  
+  //document.querySelector("body > div > div > div:nth-child(1)")
   
   //timers
   let obstacleTimerId = null 
@@ -23,7 +28,7 @@ function init() {
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
-  const lives = 2
+  let lives = 2
   
   
 
@@ -204,22 +209,48 @@ function init() {
     //check if the game is in play
     const activeCars = squares[playerIndex].classList.contains('car')
     const activeCar2 = squares[playerIndex].classList.contains('car2')
+    
+    const activeShark = squares[playerIndex].classList.contains('sharkA')
+    const activeSharkMiddle = squares[playerIndex].classList.contains('sharkB')
+    const activeSharkBack = squares[playerIndex].classList.contains('sharkC')
 
+    const sharkLad = [activeShark, activeSharkMiddle, activeSharkBack]
+
+    sharkLad.forEach(sharkBit => {
+      if (sharkBit) {
+        playerIndex--
+        squares.forEach(square => square.classList.remove('player'))
+        squares[playerIndex  + 1].classList.add('player')
+      }
+  
+
+    })
+    
+
+    
 
     //const activePlayers = squares[playerIndex].classList.contains('player')
     
     if (activeCars || activeCar2) {
-      squares[playerIndex].classList.remove('player')
-      frogLive1.style.display = 'none'
-      playerIndex = Math.floor((width * width) - (width / 2))
-      squares[playerIndex].classList.add('player')
+      looseLife()
+    }
 
-      
+    if (lives <= 0) {
+      reset()
     }
 
    
   }
-  
+
+  //dying and loosing lives
+
+  function looseLife() {
+    squares[playerIndex].classList.remove('player')
+    frogLives[lives - 1].classList.remove('life')
+    lives--
+    playerIndex = Math.floor((width * width) - (width / 2))
+    squares[playerIndex].classList.add('player')  
+  }
 
   //start the game
   function play() {
@@ -227,7 +258,7 @@ function init() {
       obstacleTimerId = setInterval(obstacleTimer, 500)
       gameRunning = true
       startTimer()
-      timerId = setInterval(startTimer,200)
+      timerId = setInterval(startTimer,1000)
       startBtn.style.display = 'none' 
       resetBtn.style.display = 'block'
 
@@ -235,6 +266,9 @@ function init() {
   }
   //reset the game
   function reset() {
+    lives = 2
+    frogLives[0].classList.add('life')
+    frogLives[1].classList.add('life')
     squares[playerIndex].classList.remove('player')
     playerIndex = Math.floor((width * width) - (width / 2))
     squares[playerIndex].classList.add('player')

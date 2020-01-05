@@ -35,10 +35,11 @@ div.grid-item {
 }
 
 div.grid-item.player {
-  background-image: url('../assets/frogsprite.png');
+  content:  url('../assets/frogsprite.png');
+  /*background-image: url('../assets/frogsprite.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
+  background-position: bottom;*/
 }
 
 div.grid-item.car {
@@ -162,20 +163,13 @@ h2 {
   justify-content: center;
 }
 
-.live1 {
+.life {
   background-image: url('../assets/frogsprite1.png');
   background-repeat: no-repeat;
   width:120px; 
   height:120px;
 }
 
-.live2 {
-  background-image: url('../assets/frogsprite2.png');
-  background-repeat: no-repeat;
-  width:120px; 
-  height:120px;
-
-}
 
 .deadFrog {
   background-image: url('../assets/deadfrogger.jpg');
