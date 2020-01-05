@@ -176,3 +176,10 @@ h2 {
   height:120px;
 
 }
+
+.deadFrog {
+  background-image: url('../assets/deadfrogger.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}

@@ -6,6 +6,8 @@ function init() {
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
   const timer = document.querySelector('.timer')
+  const frogLive1 = document.querySelector('.live1')
+  const frogLive2 = document.querySelector('.live2')
   
   //timers
   let obstacleTimerId = null 
@@ -21,8 +23,8 @@ function init() {
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
-  //where the obstacle vars are
-  //cars
+  const lives = 2
+  
   
 
 
@@ -146,6 +148,8 @@ function init() {
   squares[lilypad].classList.add('lilypad')
   squares[lilypad + 3].classList.add('lilypad')
   squares[lilypad + 6].classList.add('lilypad')
+
+  //
   
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
@@ -201,12 +205,15 @@ function init() {
     const activeCars = squares[playerIndex].classList.contains('car')
     const activeCar2 = squares[playerIndex].classList.contains('car2')
 
+
     //const activePlayers = squares[playerIndex].classList.contains('player')
     
     if (activeCars || activeCar2) {
       squares[playerIndex].classList.remove('player')
+      frogLive1.style.display = 'none'
       playerIndex = Math.floor((width * width) - (width / 2))
       squares[playerIndex].classList.add('player')
+
       
     }
 
