@@ -17,7 +17,7 @@ function init() {
   //game variables
   const width = 11
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
-  //let carStart = 88
+  let carStart = 88
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
@@ -82,7 +82,7 @@ function init() {
   }
 
   //functions
-  
+
   function obstacleTimer() {
     car1.moveRight()
     car2.moveLeft()
@@ -102,6 +102,7 @@ function init() {
     crocB.moveLeft()
     crocC.moveRight()
     crocD.moveRight()
+    checkFrog()
   }
 
   const car1 = new Car(6, 66, 'car')
@@ -134,7 +135,7 @@ function init() {
   squares[playerIndex].classList.add('player')
 
   //places the car on the grid
-  //squares[carStart].classList.add('car')
+  squares[carStart].classList.add('car')
 
   //places the log on the grid
   squares[logStart].classList.add('log')
@@ -149,31 +150,32 @@ function init() {
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
   function handleKeyDown(e) {
-   if (gameRunning === true) {
-    switch (e.keyCode) {
-      case 39: 
-        if (playerIndex % width < width - 1) {
-          playerIndex++ //go right one
-        }        
-        break
-      case 37:
-        if (playerIndex % width > 0) {
-          playerIndex--  //go left one
-        }
-        break
-      case 40:
-        if (playerIndex + width < width * width) {
-          playerIndex += width //yourself plus the width(adding 11)//down
-        }
-        break
-      case 38:
-        if (playerIndex - width >= 0) {
-          playerIndex -= width 
-        }
-        break  
-      default:
-        console.log('player shouldnt move')    
-    } 
+    if (gameRunning === true) {
+      switch (e.keyCode) {
+        case 39: 
+          if (playerIndex % width < width - 1) {
+            playerIndex++ //go right one
+          }        
+          break
+        case 37:
+          if (playerIndex % width > 0) {
+            playerIndex--  //go left one
+          }
+          break
+        case 40:
+          if (playerIndex + width < width * width) {
+            playerIndex += width //yourself plus the width(adding 11)//down
+          }
+          break
+        case 38:
+          if (playerIndex - width >= 0) {
+            playerIndex -= width 
+          }
+          break  
+        default:
+          console.log('player shouldnt move')    
+      } 
+      checkFrog()
     } 
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
@@ -189,8 +191,27 @@ function init() {
       timeRemaining-- 
     }
   }
+
+
   
-  
+  //checks the class of the square the frog is in
+
+  function checkFrog() {
+    //check if the game is in play
+    const activeCars = squares[playerIndex].classList.contains('car')
+    const activeCar2 = squares[playerIndex].classList.contains('car2')
+
+    //const activePlayers = squares[playerIndex].classList.contains('player')
+    
+    if (activeCars || activeCar2) {
+      squares[playerIndex].classList.remove('player')
+      playerIndex = Math.floor((width * width) - (width / 2))
+      squares[playerIndex].classList.add('player')
+      
+    }
+
+   
+  }
   
 
   //start the game
@@ -207,6 +228,9 @@ function init() {
   }
   //reset the game
   function reset() {
+    squares[playerIndex].classList.remove('player')
+    playerIndex = Math.floor((width * width) - (width / 2))
+    squares[playerIndex].classList.add('player')
     finishGame()
     clearInterval(obstacleTimerId)
     gameRunning = false
