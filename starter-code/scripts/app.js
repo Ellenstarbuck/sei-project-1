@@ -8,9 +8,10 @@ function init() {
   const timer = document.querySelector('.timer')
   const frogLive1 = document.querySelector('body > div > div > div:nth-child(1)')
   const frogLive2 = document.querySelector('body > div > div > div:nth-child(2)')
+  const frogLive3 = document.querySelector('body > div > div > div:nth-child(3)')
 
 
-  const frogLives = [frogLive1, frogLive2]
+  const frogLives = [frogLive1, frogLive2, frogLive3]
   
   //document.querySelector("body > div > div > div:nth-child(1)")
   
@@ -28,7 +29,8 @@ function init() {
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
-  let lives = 2
+  let lives = 3
+  
   
   
 
@@ -92,6 +94,7 @@ function init() {
 
   function obstacleTimer() {
     checkShark()
+    checkLilypad()
     car1.moveRight()
     car2.moveLeft()
     car3.moveRight()
@@ -210,9 +213,7 @@ function init() {
     //check if the game is in play
     const activeCars = squares[playerIndex].classList.contains('car')
     const activeCar2 = squares[playerIndex].classList.contains('car2')
-    //add loose life in if goes off board
-    
-    //const activePlayers = squares[playerIndex].classList.contains('player')
+  
     
     if (activeCars || activeCar2) {
       looseLife()
@@ -246,7 +247,11 @@ function init() {
       if (sharkBit) {
         squares[playerIndex].classList.remove('player')
         playerIndex++
-        squares[playerIndex].classList.add('player')
+        if (playerIndex % width > 0) {
+          squares[playerIndex].classList.add('player')
+        } else {
+          looseLife()
+        }
       }
     })
 
@@ -267,6 +272,34 @@ function init() {
   }
 
 
+  //keep the frog on the lilypad
+
+  function checkLilypad(){
+    const lilypadA = squares[playerIndex].classList.contains('lilypad')
+    //const lilypadB = squares[playerIndex + 3].classList.contains('lilypad')
+    //const lilypadC = squares[playerIndex + 6].classList.contains('lilypad')
+
+    const lilypadLad = [lilypadA] //lilypadB, lilypadC]
+
+    lilypadLad.forEach(lilypadbit => {
+      if (lilypadbit) {
+        squares[playerIndex].classList.add('player2')
+        looseLife() 
+        if (lives === 0) {
+          squares[lilypad].classList.remove('player2')
+          squares[lilypad + 3].classList.remove('player2')
+          squares[lilypad + 6].classList.remove('player2')
+          console.log('you won!')
+        }
+        
+        
+      }
+
+    })
+
+    
+  }
+
 
   //dying and loosing lives
 
@@ -275,7 +308,10 @@ function init() {
     frogLives[lives - 1].classList.remove('life')
     lives--
     playerIndex = Math.floor((width * width) - (width / 2))
-    squares[playerIndex].classList.add('player')  
+    squares[playerIndex].classList.add('player')
+    if (lives === -1) {
+      reset()
+    }  
   }
 
   //start the game
@@ -292,9 +328,11 @@ function init() {
   }
   //reset the game
   function reset() {
-    lives = 2
+    squares[playerIndex].classList.remove('player2')
+    lives = 3
     frogLives[0].classList.add('life')
     frogLives[1].classList.add('life')
+    frogLives[2].classList.add('life')
     squares[playerIndex].classList.remove('player')
     playerIndex = Math.floor((width * width) - (width / 2))
     squares[playerIndex].classList.add('player')

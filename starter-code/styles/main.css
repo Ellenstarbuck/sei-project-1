@@ -42,6 +42,10 @@ div.grid-item.player {
   background-position: bottom;*/
 }
 
+div.grid-item.player2 {
+  content:  url('../assets/frogsprite.png')
+}
+
 div.grid-item.car {
   background-image: url('../assets/car.png');
   background-repeat: no-repeat;
