@@ -114,13 +114,23 @@ function init() {
     sharkA.moveLeft()
     sharkB.moveLeft()
     sharkC.moveLeft()
-    sharkD.moveRight()
-    sharkE.moveRight()
-    sharkF.moveRight()
+    shark2A.moveRight()
+    shark2B.moveRight()
+    shark2C.moveRight()
+    shark3A.moveLeft()
+    shark3B.moveLeft()
+    shark3C.moveLeft()
+    shark4A.moveRight()
+    shark4B.moveRight()
+    shark4C.moveRight()
     crocA.moveLeft()
     crocB.moveLeft()
-    crocC.moveRight()
-    crocD.moveRight()
+    croc2B.moveRight()
+    croc2A.moveRight()
+    croc3A.moveLeft()
+    croc3B.moveLeft()
+    croc4A.moveRight()
+    croc4B.moveRight()
     checkCar()
   }
 
@@ -139,16 +149,29 @@ function init() {
   const sharkB = new Log(1, 12,'sharkB')
   const sharkC = new Log(1, 13, 'sharkC')
   //shark two
-  const sharkD = new Log(2, 32, 'shark2A')
-  const sharkE = new Log(2, 31,'shark2B')
-  const sharkF = new Log(2, 30, 'shark2C')
+  const shark2A = new Log(2, 32, 'shark2A')
+  const shark2B = new Log(2, 31,'shark2B')
+  const shark2C = new Log(2, 30, 'shark2C')
+  //shark three
+  const shark3A = new Log(3, 33, 'shark3A')
+  const shark3B = new Log(3, 34, 'shark3B')
+  const shark3C = new Log(3, 35, 'shark3C')
+  //shark four
+  const shark4A = new Log(4, 43, 'shark4A')
+  const shark4B = new Log(4, 42, 'shark4B')
+  const shark4C = new Log(4, 41, 'shark4C')
   //crocs one
   const crocA = new Log(1, 17, 'crockA')
   const crocB = new Log(1, 18, 'crockB')
-  //cros two
-  const crocC = new Log(2, 26, 'crock2B')
-  const crocD = new Log(2, 27, 'crock2A')
-  //shark three
+  //crocs two
+  const croc2B = new Log(2, 26, 'crock2B')
+  const croc2A = new Log(2, 27, 'crock2A')
+  //crocs three
+  const croc3A = new Log(3, 39, 'crock3A')
+  const croc3B = new Log(3, 40, 'crock3B')
+  //crocs four
+  const croc4A = new Log(4, 48, 'crock4B')
+  const croc4B = new Log(4, 49, 'crock4A')
   
 
   //water

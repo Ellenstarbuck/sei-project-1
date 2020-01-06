@@ -117,6 +117,32 @@ div.grid-item.crock2B {
   background-size: contain;
 }
 
+div.grid-item.crock3A {
+  background-image: url('../assets/crockA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scaleX(-1);
+}
+
+div.grid-item.crock3B {
+  background-image: url('../assets/crockB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: scaleX(-1);
+}
+
+div.grid-item.crock4A {
+  background-image: url('../assets/crockA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+div.grid-item.crock4B {
+  background-image: url('../assets/crockB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 div.grid-item.sharkA {
   background-image: url('../assets/SharkA.png');
   background-repeat: no-repeat;
@@ -182,6 +208,31 @@ div.grid-item.shark3C {
   background-size: contain;
   background-position: bottom;
 }  
+
+div.grid-item.shark4A {
+  background-image: url('../assets/SharkA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
+}
+
+div.grid-item.shark4B {
+  background-image: url('../assets/SharkB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
+}
+
+div.grid-item.shark4C {
+  background-image: url('../assets/SharkC.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  transform: scaleX(-1);
+}
+
 
 div.grid-item.lilypad {
   background-image: url('../assets/lilypad.png');
