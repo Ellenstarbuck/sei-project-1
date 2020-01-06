@@ -91,6 +91,7 @@ function init() {
   //functions
 
   function obstacleTimer() {
+    checkShark()
     car1.moveRight()
     car2.moveLeft()
     car3.moveRight()
@@ -109,7 +110,7 @@ function init() {
     crocB.moveLeft()
     crocC.moveRight()
     crocD.moveRight()
-    checkFrog()
+    checkCar()
   }
 
   const car1 = new Car(6, 66, 'car')
@@ -184,7 +185,7 @@ function init() {
         default:
           console.log('player shouldnt move')    
       } 
-      checkFrog()
+      checkCar()
     } 
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
@@ -205,30 +206,12 @@ function init() {
   
   //checks the class of the square the frog is in
 
-  function checkFrog() {
+  function checkCar() {
     //check if the game is in play
     const activeCars = squares[playerIndex].classList.contains('car')
     const activeCar2 = squares[playerIndex].classList.contains('car2')
+    //add loose life in if goes off board
     
-    const activeShark = squares[playerIndex].classList.contains('sharkA')
-    const activeSharkMiddle = squares[playerIndex].classList.contains('sharkB')
-    const activeSharkBack = squares[playerIndex].classList.contains('sharkC')
-
-    const sharkLad = [activeShark, activeSharkMiddle, activeSharkBack]
-
-    sharkLad.forEach(sharkBit => {
-      if (sharkBit) {
-        playerIndex--
-        squares.forEach(square => square.classList.remove('player'))
-        squares[playerIndex  + 1].classList.add('player')
-      }
-  
-
-    })
-    
-
-    
-
     //const activePlayers = squares[playerIndex].classList.contains('player')
     
     if (activeCars || activeCar2) {
@@ -242,6 +225,42 @@ function init() {
    
   }
 
+  function checkShark() {
+    const sharkA = squares[playerIndex].classList.contains('sharkA')
+    const sharkB = squares[playerIndex].classList.contains('sharkB')
+    const sharkC = squares[playerIndex].classList.contains('sharkC')
+    const sharkD = squares[playerIndex].classList.contains('shark2A')
+    const sharkE = squares[playerIndex].classList.contains('shark2B')
+    const sharkF = squares[playerIndex].classList.contains('shark2C')
+
+    const sharkLadLeft = [sharkA, sharkB, sharkC]
+
+    const sharkLadRight = [sharkD, sharkE, sharkF]
+
+  
+  ////crocs one
+  //const crocA = new Log(1, 17, 'crockA')
+  //const crocB = new Log(1, 18, 'crockB')
+  ////cros two
+  //const crocC = new Log(2, 26, 'crock2B')
+  //const crocD = new Log(2, 27, 'crock2A')
+    sharkLadRight.forEach(sharkBit => {
+      if (sharkBit) {
+        squares[playerIndex].classList.remove('player')
+        playerIndex++
+        squares[playerIndex].classList.add('player')
+      }
+    })
+
+
+    sharkLadLeft.forEach(sharkBit => {
+      if (sharkBit) {
+        squares[playerIndex].classList.remove('player')
+        playerIndex--
+        squares[playerIndex].classList.add('player')
+      }
+    })
+  }
   //dying and loosing lives
 
   function looseLife() {
