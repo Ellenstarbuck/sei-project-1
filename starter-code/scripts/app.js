@@ -30,6 +30,8 @@ function init() {
   let lilypad = 2
   let gameRunning = false
   let lives = 3
+  let grass = 0
+  
   
   
   
@@ -100,6 +102,7 @@ function init() {
   function obstacleTimer() {
     checkShark()
     checkLilypad()
+    checkWater()
     car1.moveRight()
     car2.moveLeft()
     car3.moveRight()
@@ -131,11 +134,11 @@ function init() {
   const car8 = new Car(9, 106, 'car2')
 
   //logs
-  //log one
+  //shark one
   const sharkA = new Log(1, 11, 'sharkA')
   const sharkB = new Log(1, 12,'sharkB')
   const sharkC = new Log(1, 13, 'sharkC')
-  //log two
+  //shark two
   const sharkD = new Log(2, 32, 'shark2A')
   const sharkE = new Log(2, 31,'shark2B')
   const sharkF = new Log(2, 30, 'shark2C')
@@ -145,11 +148,36 @@ function init() {
   //cros two
   const crocC = new Log(2, 26, 'crock2B')
   const crocD = new Log(2, 27, 'crock2A')
+  //shark three
+  
 
   //water
   const waterArray = squares.slice(11,55)
   waterArray.forEach(square => square.classList.add('water'))
+
+  //road
+  const roadTopArray = squares.slice(66,77)
+  roadTopArray.forEach(square => square.classList.add('roadTop'))
+
+  const roadSecondRow = squares.slice(77,88)
+  roadSecondRow.forEach(square => square.classList.add('roadSecondRow'))
+
+  const roadThirdRow = squares.slice(88,99)
+  roadThirdRow.forEach(square => square.classList.add('roadThirdRow'))
+
+  const roadBottomArray = squares.slice(99,110)
+  roadBottomArray.forEach(square => square.classList.add('roadBottom'))
   
+  //grass
+
+  squares[grass].classList.add('grass')
+  squares[grass + 1].classList.add('grass')
+  squares[grass + 3].classList.add('grass')
+  squares[grass + 4].classList.add('grass')
+  squares[grass + 6].classList.add('grass')
+  squares[grass + 7].classList.add('grass')
+  squares[grass + 9].classList.add('grass')
+  squares[grass + 10].classList.add('grass')
   
   
   
@@ -307,9 +335,14 @@ function init() {
         
       }
 
-    })
+    })  
+  }
 
-    
+  function checkWater() {
+    const waterHere = squares[playerIndex].classList.contains('water')
+    if (waterHere) {
+      looseLife()
+    }
   }
 
 

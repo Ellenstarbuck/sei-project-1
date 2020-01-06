@@ -46,12 +46,38 @@ div.grid-item.player2 {
   content:  url('../assets/frogsprite.png')
 }
 
+div.grid-item.grass {
+  background-image: url('../assets/Grass\ Texture\ 3.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 div.grid-item.water {
   background-image: url('../assets/water.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+div.grid-item.roadTop {
+  background-image: url('../assets/smallRoad.png');
+  background-size: contain;
+}
+
+div.grid-item.roadSecondRow {
+  background-image: url('../assets/roadSecondRow.png');
+  background-size: contain;
+}
+
+div.grid-item.roadThirdRow {
+  background-image: url('../assets/roadThirdRow.png');
+  background-size: contain;
+}
+
+div.grid-item.roadBottom {
+  background-image: url('../assets/smallRoadBottom.png');
+  background-size: contain;
+
+}
 
 div.grid-item.car {
   background-image: url('../assets/car.png');
@@ -90,8 +116,6 @@ div.grid-item.crock2B {
   background-repeat: no-repeat;
   background-size: contain;
 }
-
-
 
 div.grid-item.sharkA {
   background-image: url('../assets/SharkA.png');
@@ -137,6 +161,27 @@ div.grid-item.shark2C {
   background-position: bottom;
   transform: scaleX(-1);
 }
+
+div.grid-item.shark3A {
+  background-image: url('../assets/SharkA.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+div.grid-item.shark3B {
+  background-image: url('../assets/SharkB.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+
+div.grid-item.shark3C {
+  background-image: url('../assets/SharkC.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}  
 
 div.grid-item.lilypad {
   background-image: url('../assets/lilypad.png');
