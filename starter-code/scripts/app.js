@@ -242,14 +242,6 @@ function init() {
     const sharkLadRight = [sharkD, sharkE, sharkF, crockC, crockD]
 
     
-
-  
-  ////crocs one
-  //const crocA = new Log(1, 17, 'crockA')
-  //const crocB = new Log(1, 18, 'crockB')
-  ////cros two
-  //const crocC = new Log(2, 26, 'crock2B')
-  //const crocD = new Log(2, 27, 'crock2A')
     sharkLadRight.forEach(sharkBit => {
       if (sharkBit) {
         squares[playerIndex].classList.remove('player')
@@ -263,7 +255,13 @@ function init() {
       if (sharkBit) {
         squares[playerIndex].classList.remove('player')
         playerIndex--
-        squares[playerIndex].classList.add('player')
+        if (playerIndex % width < width - 1) {
+          squares[playerIndex].classList.add('player')
+        } else {
+          looseLife()
+        }
+      
+
       }
     })
   }
