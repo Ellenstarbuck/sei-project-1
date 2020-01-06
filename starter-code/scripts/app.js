@@ -33,6 +33,7 @@ function init() {
   
   
   
+  
 
 
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
@@ -90,6 +91,10 @@ function init() {
     }
   }
 
+  
+
+
+
   //functions
 
   function obstacleTimer() {
@@ -140,6 +145,13 @@ function init() {
   //cros two
   const crocC = new Log(2, 26, 'crock2B')
   const crocD = new Log(2, 27, 'crock2A')
+
+  //water
+  const waterArray = squares.slice(11,55)
+  waterArray.forEach(square => square.classList.add('water'))
+  
+  
+  
   
  
   //place the player at the starting point when the grid has been built
@@ -158,7 +170,7 @@ function init() {
   squares[lilypad + 3].classList.add('lilypad')
   squares[lilypad + 6].classList.add('lilypad')
 
-  //
+  
   
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
