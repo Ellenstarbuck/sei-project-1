@@ -232,10 +232,16 @@ function init() {
     const sharkD = squares[playerIndex].classList.contains('shark2A')
     const sharkE = squares[playerIndex].classList.contains('shark2B')
     const sharkF = squares[playerIndex].classList.contains('shark2C')
+    const crockA = squares[playerIndex].classList.contains('crockA')
+    const crockB = squares[playerIndex].classList.contains('crockB')
+    const crockC = squares[playerIndex].classList.contains('crock2B')
+    const crockD = squares[playerIndex].classList.contains('crock2A')
 
-    const sharkLadLeft = [sharkA, sharkB, sharkC]
+    //shark arrays
+    const sharkLadLeft = [sharkA, sharkB, sharkC, crockA, crockB]
+    const sharkLadRight = [sharkD, sharkE, sharkF, crockC, crockD]
 
-    const sharkLadRight = [sharkD, sharkE, sharkF]
+    
 
   
   ////crocs one
@@ -261,6 +267,9 @@ function init() {
       }
     })
   }
+
+
+
   //dying and loosing lives
 
   function looseLife() {
