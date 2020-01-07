@@ -204,6 +204,17 @@ function init() {
   squares[grass + 10].classList.add('grass')
   
   
+  //tarmac
+  const tarmacArray = squares.slice(110,121)
+  const tarmacMiddleArray = squares.slice(55,66)
+
+  tarmacArray.forEach(square => square.classList.add('tarmac'))
+  tarmacMiddleArray.forEach(square => square.classList.add('tarmac'))
+
+
+
+
+
   
  
   //place the player at the starting point when the grid has been built
@@ -425,6 +436,8 @@ function init() {
   //reset the game
   function reset() {
     squares[lilypad].classList.remove('player2')
+    squares[lilypad + 3].classList.remove('player2')
+    squares[lilypad + 6].classList.remove('player2')
     lives = 3
     frogLives[0].classList.add('life')
     frogLives[1].classList.add('life')
@@ -449,6 +462,8 @@ function init() {
     clearInterval(timerId)
 
   }
+
+  
 
   //event handlers
   window.addEventListener('keydown', handleKeyDown)

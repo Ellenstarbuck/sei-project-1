@@ -49,7 +49,7 @@ div.grid-item.grass {
 }
 
 div.grid-item.water {
-  background-image: url('../assets/water.jpg');
+  background-image: url('../assets/water.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -75,6 +75,11 @@ div.grid-item.roadBottom {
 
 }
 
+div.grid-item.tarmac {
+  background-image: url('../assets/ground_asphalt_synth_03.png');
+  background-size: contain;
+}
+
 div.grid-item.car {
   background-image: url('../assets/car.png');
   background-repeat: no-repeat;
@@ -88,59 +93,58 @@ div.grid-item.car2 {
 }
 
 div.grid-item.crockA {
-  background-image: url('../assets/crockA.png');
+  background-image: url('../assets/CrockA.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scaleX(-1);
+
 }
 
 div.grid-item.crockB {
-  background-image: url('../assets/crockB.png');
+  background-image: url('../assets/CrockB.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scaleX(-1);
 }
 
 div.grid-item.crock2A {
-  background-image: url('../assets/crockA.png');
+  background-image: url('../assets/CrockARotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.crock2B {
-  background-image: url('../assets/crockB.png');
+  background-image: url('../assets/CrockBRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.crock3A {
-  background-image: url('../assets/crockA.png');
+  background-image: url('../assets/CrockA.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scaleX(-1);
+  
 }
 
 div.grid-item.crock3B {
-  background-image: url('../assets/crockB.png');
+  background-image: url('../assets/CrockB.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: scaleX(-1);
+  
 }
 
 div.grid-item.crock4A {
-  background-image: url('../assets/crockA.png');
+  background-image: url('../assets/CrockARotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.crock4B {
-  background-image: url('../assets/crockB.png');
+  background-image: url('../assets/CrockBRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 div.grid-item.sharkA {
-  background-image: url('../assets/SharkA.png');
+  background-image: url('../assets/SharkA.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -154,35 +158,35 @@ div.grid-item.sharkB {
 }
 
 div.grid-item.sharkC {
-  background-image: url('../assets/SharkC.png');
+  background-image: url('../assets/SharkC.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
 }
 
 div.grid-item.shark2A {
-  background-image: url('../assets/SharkARotate.png');
+  background-image: url('../assets/SharkARotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 div.grid-item.shark2B {
-  background-image: url('../assets/SharkBRotate.png');
+  background-image: url('../assets/SharkBRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
 }
 
 div.grid-item.shark2C {
-  background-image: url('../assets/SharkCRotate.png');
+  background-image: url('../assets/SharkCRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
 }
 
 div.grid-item.shark3A {
-  background-image: url('../assets/SharkA.png');
+  background-image: url('../assets/SharkA.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -196,28 +200,28 @@ div.grid-item.shark3B {
 }
 
 div.grid-item.shark3C {
-  background-image: url('../assets/SharkC.png');
+  background-image: url('../assets/SharkC.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom
 }  
 
 div.grid-item.shark4A {
-  background-image: url('../assets/SharkARotate.png');
+  background-image: url('../assets/SharkARotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center
 }
 
 div.grid-item.shark4B {
-  background-image: url('../assets/SharkBRotate.png');
+  background-image: url('../assets/SharkBRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
 }
 
 div.grid-item.shark4C {
-  background-image: url('../assets/SharkCRotate.png');
+  background-image: url('../assets/SharkCRotate.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
