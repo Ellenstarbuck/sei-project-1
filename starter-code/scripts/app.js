@@ -25,7 +25,7 @@ function init() {
   //game variables
   const width = 11
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
-  let carStart = 88
+  //let carStart = 88
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
@@ -137,12 +137,12 @@ function init() {
 
   const car1 = new Car(6, 66, 'car')
   const car2 = new Car(7, 87, 'car2')
-  const car3 = new Car(8, 88, 'car')
-  const car4 = new Car(9, 109, 'car2')
+  const car3 = new Car(8, 88, 'car3')
+  const car4 = new Car(9, 109, 'car4')
   const car5 = new Car(6, 69, 'car')
   const car6 = new Car(7,84, 'car2')
-  const car7 = new Car(8, 91, 'car')
-  const car8 = new Car(9, 106, 'car2')
+  const car7 = new Car(8, 91, 'car3')
+  const car8 = new Car(9, 106, 'car4')
 
   //water
   const waterArray = squares.slice(11,55)
@@ -197,8 +197,7 @@ function init() {
   squares[grass].classList.add('grass')
   squares[grass + 1].classList.add('grass')
   squares[grass + 3].classList.add('grass')
-  squares[grass + 4].classList.add('grass')
-  squares[grass + 6].classList.add('grass')
+  squares[grass + 5].classList.add('grass')
   squares[grass + 7].classList.add('grass')
   squares[grass + 9].classList.add('grass')
   squares[grass + 10].classList.add('grass')
@@ -221,7 +220,7 @@ function init() {
   squares[playerIndex].classList.add('player')
 
   //places the car on the grid
-  squares[carStart].classList.add('car')
+  //squares[carStart].classList.add('car')
 
   //places the log on the grid
   //squares[logStart].classList.add('log')
@@ -230,7 +229,8 @@ function init() {
 
   //places the lilypad's on the grid
   squares[lilypad].classList.add('lilypad')
-  squares[lilypad + 3].classList.add('lilypad')
+  squares[lilypad + 2].classList.add('lilypad')
+  squares[lilypad + 4].classList.add('lilypad')
   squares[lilypad + 6].classList.add('lilypad')
 
   
@@ -289,10 +289,12 @@ function init() {
   function checkCar() {
     //check if the game is in play
     const activeCars = squares[playerIndex].classList.contains('car')
-    const activeCar2 = squares[playerIndex].classList.contains('car2')
+    const activeCars2 = squares[playerIndex].classList.contains('car2')
+    const activeCars3 = squares[playerIndex].classList.contains('car3')
+    const activeCar4 = squares[playerIndex].classList.contains('car4')
   
     
-    if (activeCars || activeCar2) {
+    if (activeCars || activeCars2 || activeCars3 || activeCar4) {
       looseLife()
     }
 
@@ -436,7 +438,8 @@ function init() {
   //reset the game
   function reset() {
     squares[lilypad].classList.remove('player2')
-    squares[lilypad + 3].classList.remove('player2')
+    squares[lilypad + 2].classList.remove('player2')
+    squares[lilypad + 4].classList.remove('player2')
     squares[lilypad + 6].classList.remove('player2')
     lives = 3
     frogLives[0].classList.add('life')

@@ -81,15 +81,20 @@ div.grid-item.tarmac {
 }
 
 div.grid-item.car {
-  background-image: url('../assets/car.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-image: url('../assets/carTopRow.jpg');
 }
 
 div.grid-item.car2 {
-  background-image: url('../assets/car2.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-image: url('../assets/carSecondRoad.jpg');
+}
+
+div.grid-item.car3 {
+  background-image: url('../assets/carThirdRow.jpg');
+}
+
+div.grid-item.car4 {
+  background-image: url('../assets/carRoadBottom.jpg');
+
 }
 
 div.grid-item.crockA {
@@ -229,7 +234,7 @@ div.grid-item.shark4C {
 
 
 div.grid-item.lilypad {
-  background-image: url('../assets/lilypad.png');
+  background-image: url('../assets/Lilypad.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   
@@ -253,23 +258,43 @@ button.reset {
 h2 {
   display: flex;
   background-color: aqua;
-  flex-direction: column;
+  text-align: center;
   margin-left: 40px;
+  height: 50px;
+  width: 50px;
 }
+
 
 .livebox {
   height: 150px;
   width: 150px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .life {
   background-image: url('../assets/frogsprite1.png');
   background-repeat: no-repeat;
-  width:120px; 
+  width:42px; 
   height:120px;
+  padding: 10px;
+  display: flex;
+
 }
+
+.safe {
+  background-image: url('../assets/frogsprite1.png');
+  background-repeat: no-repeat;
+  width:42px; 
+  height:120px;
+  padding: 10px;
+  display: flex;
+
+}
+
+
 
 
 .deadFrog {
@@ -278,3 +303,4 @@ h2 {
   background-size: contain;
   background-position: bottom;
 }
+
