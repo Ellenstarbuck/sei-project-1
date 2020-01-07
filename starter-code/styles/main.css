@@ -36,10 +36,6 @@ div.grid-item {
 
 div.grid-item.player {
   content:  url('../assets/frogsprite.png');
-  /*background-image: url('../assets/frogsprite.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;*/
 }
 
 div.grid-item.player2 {

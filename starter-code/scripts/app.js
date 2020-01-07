@@ -102,7 +102,6 @@ function init() {
   function obstacleTimer() {
     checkShark()
     checkLilypad()
-    checkWater()
     car1.moveRight()
     car2.moveLeft()
     car3.moveRight()
@@ -132,6 +131,7 @@ function init() {
     croc4A.moveRight()
     croc4B.moveRight()
     checkCar()
+    checkWater()
   }
 
   const car1 = new Car(6, 66, 'car')
@@ -142,6 +142,10 @@ function init() {
   const car6 = new Car(7,84, 'car2')
   const car7 = new Car(8, 91, 'car')
   const car8 = new Car(9, 106, 'car2')
+
+  //water
+  const waterArray = squares.slice(11,55)
+  waterArray.forEach(square => square.classList.add('water'))
 
   //logs
   //shark one
@@ -173,10 +177,6 @@ function init() {
   const croc4A = new Log(4, 48, 'crock4B')
   const croc4B = new Log(4, 49, 'crock4A')
   
-
-  //water
-  const waterArray = squares.slice(11,55)
-  waterArray.forEach(square => square.classList.add('water'))
 
   //road
   const roadTopArray = squares.slice(66,77)
@@ -212,9 +212,9 @@ function init() {
   squares[carStart].classList.add('car')
 
   //places the log on the grid
-  squares[logStart].classList.add('log')
-  squares[logStart + 1].classList.add('log')
-  squares[logStart + 2].classList.add('log')
+  //squares[logStart].classList.add('log')
+  //squares[logStart + 1].classList.add('log')
+  //squares[logStart + 2].classList.add('log')
 
   //places the lilypad's on the grid
   squares[lilypad].classList.add('lilypad')
@@ -252,6 +252,7 @@ function init() {
           console.log('player shouldnt move')    
       } 
       checkCar()
+      checkWater()
     } 
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
@@ -289,51 +290,78 @@ function init() {
    
   }
 
+  function checkWater() {
+    //console.log(squares[playerIndex].classList.length)
+    if (squares[playerIndex].classList.contains('water') && squares[playerIndex].classList.length < 3){
+      looseLife()
+    }
+    if (lives <= 0) {
+      reset()
+    }
+  }
+
+
   function checkShark() {
     const sharkA = squares[playerIndex].classList.contains('sharkA')
     const sharkB = squares[playerIndex].classList.contains('sharkB')
     const sharkC = squares[playerIndex].classList.contains('sharkC')
-    const sharkD = squares[playerIndex].classList.contains('shark2A')
-    const sharkE = squares[playerIndex].classList.contains('shark2B')
-    const sharkF = squares[playerIndex].classList.contains('shark2C')
+    const shark2A = squares[playerIndex].classList.contains('shark2A')
+    const shark2B = squares[playerIndex].classList.contains('shark2B')
+    const shark2C = squares[playerIndex].classList.contains('shark2C')
+    const shark3A = squares[playerIndex].classList.contains('shark3A')
+    const shark3B = squares[playerIndex].classList.contains('shark3B')
+    const shark3C = squares[playerIndex].classList.contains('shark3C')
+    const shark4A = squares[playerIndex].classList.contains('shark4A')
+    const shark4B = squares[playerIndex].classList.contains('shark4B')
+    const shark4C = squares[playerIndex].classList.contains('shark4C')
     const crockA = squares[playerIndex].classList.contains('crockA')
     const crockB = squares[playerIndex].classList.contains('crockB')
-    const crockC = squares[playerIndex].classList.contains('crock2B')
-    const crockD = squares[playerIndex].classList.contains('crock2A')
+    const crock2B = squares[playerIndex].classList.contains('crock2B')
+    const crock2A = squares[playerIndex].classList.contains('crock2A')
+    const crock3A = squares[playerIndex].classList.contains('crock3A')
+    const crock3B = squares[playerIndex].classList.contains('crock3B')
+    const crock4B = squares[playerIndex].classList.contains('crock4B')
+    const crock4A = squares[playerIndex].classList.contains('crock4A')
+
+
 
     //shark arrays
-    const sharkLadLeft = [sharkA, sharkB, sharkC, crockA, crockB]
-    const sharkLadRight = [sharkD, sharkE, sharkF, crockC, crockD]
+    const sharkLadLeft = [sharkA, sharkB, sharkC, shark3A, shark3B, shark3C, crockA, crockB, crock3A, crock3B]
+    const sharkLadRight = [shark2A, shark2B, shark2C, shark4A, shark4B, shark4C, crock2A, crock2B, crock4A, crock4B]
+    
 
     
     sharkLadRight.forEach(sharkBit => {
       if (sharkBit) {
         squares[playerIndex].classList.remove('player')
         playerIndex++
-        if (playerIndex % width > 0) {
-          squares[playerIndex].classList.add('player')
-        } else {
-          looseLife()
-        }
+      } if (playerIndex % width > 0) {
+        squares[playerIndex].classList.add('player')
+      } else {
+        looseLife()
       }
+
+              
     })
+    
 
 
     sharkLadLeft.forEach(sharkBit => {
       if (sharkBit) {
         squares[playerIndex].classList.remove('player')
         playerIndex--
-        if (playerIndex % width < width - 1) {
-          squares[playerIndex].classList.add('player')
-        } else {
-          looseLife()
-        }
+      } if (playerIndex % width < width - 1) {
+        squares[playerIndex].classList.add('player')
+      } else {
+        looseLife()
+      }
       
 
-      }
+    
     })
   }
 
+  
 
   //keep the frog on the lilypad
 
@@ -361,12 +389,6 @@ function init() {
     })  
   }
 
-  function checkWater() {
-    const waterHere = squares[playerIndex].classList.contains('water')
-    if (waterHere) {
-      looseLife()
-    }
-  }
 
 
   //dying and loosing lives
