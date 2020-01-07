@@ -132,6 +132,7 @@ function init() {
     croc4B.moveRight()
     checkCar()
     checkWater()
+    grassDeath()
   }
 
   const car1 = new Car(6, 66, 'car')
@@ -161,9 +162,9 @@ function init() {
   const shark3B = new Log(3, 34, 'shark3B')
   const shark3C = new Log(3, 35, 'shark3C')
   //shark four
-  const shark4A = new Log(4, 43, 'shark4A')
-  const shark4B = new Log(4, 42, 'shark4B')
-  const shark4C = new Log(4, 41, 'shark4C')
+  const shark4A = new Log(4, 54, 'shark4A')
+  const shark4B = new Log(4, 53, 'shark4B')
+  const shark4C = new Log(4, 52, 'shark4C')
   //crocs one
   const crocA = new Log(1, 17, 'crockA')
   const crocB = new Log(1, 18, 'crockB')
@@ -253,6 +254,7 @@ function init() {
       } 
       checkCar()
       checkWater()
+      checkLilypad()
     } 
     squares.forEach(square => square.classList.remove('player'))
     squares[playerIndex].classList.add('player')
@@ -367,29 +369,33 @@ function init() {
 
   function checkLilypad(){
     const lilypadA = squares[playerIndex].classList.contains('lilypad')
-    //const lilypadB = squares[playerIndex + 3].classList.contains('lilypad')
-    //const lilypadC = squares[playerIndex + 6].classList.contains('lilypad')
+  
 
-    const lilypadLad = [lilypadA] //lilypadB, lilypadC]
+    const lilypadLad = [lilypadA] 
 
     lilypadLad.forEach(lilypadbit => {
       if (lilypadbit) {
         squares[playerIndex].classList.add('player2')
         looseLife() 
-        if (lives === 0) {
-          squares[lilypad].classList.remove('player2')
-          squares[lilypad + 3].classList.remove('player2')
-          squares[lilypad + 6].classList.remove('player2')
-          console.log('you won!')
+        if (lives === -1) {
+          reset()
         }
-        
         
       }
 
     })  
   }
 
+  //landing on grass and dying
 
+  function grassDeath() {
+    if (squares[playerIndex].classList.contains('grass')) {
+      looseLife()
+    }
+    if (lives <= 0) {
+      reset()
+    }
+  } 
 
   //dying and loosing lives
 
@@ -418,7 +424,7 @@ function init() {
   }
   //reset the game
   function reset() {
-    squares[playerIndex].classList.remove('player2')
+    squares[lilypad].classList.remove('player2')
     lives = 3
     frogLives[0].classList.add('life')
     frogLives[1].classList.add('life')

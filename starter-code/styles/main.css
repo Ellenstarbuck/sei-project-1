@@ -143,7 +143,7 @@ div.grid-item.sharkA {
   background-image: url('../assets/SharkA.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
+  background-position: center;
 }
 
 div.grid-item.sharkB {
@@ -161,34 +161,31 @@ div.grid-item.sharkC {
 }
 
 div.grid-item.shark2A {
-  background-image: url('../assets/SharkA.png');
+  background-image: url('../assets/SharkARotate.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
-  transform: scaleX(-1);
+  background-position: center;
 }
 
 div.grid-item.shark2B {
-  background-image: url('../assets/SharkB.png');
+  background-image: url('../assets/SharkBRotate.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  transform: scaleX(-1);
 }
 
 div.grid-item.shark2C {
-  background-image: url('../assets/SharkC.png');
+  background-image: url('../assets/SharkCRotate.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  transform: scaleX(-1);
 }
 
 div.grid-item.shark3A {
   background-image: url('../assets/SharkA.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
+  background-position: center;
 }
 
 div.grid-item.shark3B {
@@ -202,31 +199,28 @@ div.grid-item.shark3C {
   background-image: url('../assets/SharkC.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
+  background-position: bottom
 }  
 
 div.grid-item.shark4A {
-  background-image: url('../assets/SharkA.png');
+  background-image: url('../assets/SharkARotate.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom;
-  transform: scaleX(-1);
+  background-position: center
 }
 
 div.grid-item.shark4B {
-  background-image: url('../assets/SharkB.png');
+  background-image: url('../assets/SharkBRotate.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  transform: scaleX(-1);
 }
 
 div.grid-item.shark4C {
-  background-image: url('../assets/SharkC.png');
+  background-image: url('../assets/SharkCRotate.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  transform: scaleX(-1);
 }
 
 
