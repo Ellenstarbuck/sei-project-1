@@ -17,7 +17,7 @@ main {
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 80px;
 }  
 
 div.grid {
@@ -25,13 +25,11 @@ div.grid {
   height: 440px;
   display: flex;
   flex-wrap: wrap;
-  background-color: aqua;
 }
 
 div.grid-item {
   width: 40px;
   height: 40px;
-  border: 1px dashed black;
 }
 
 div.grid-item.player {
@@ -243,25 +241,27 @@ div.grid-item.lilypad {
 
 div.panel {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  flex-direction: column;
+  justify-content: flex-start;
+  
 }
 
-button.reset {
-  display: flex;
-  justify-content: flex-end;
+button {
+  text-align: center;
+  height: 30px;
+  width: 50px;
+  margin: 40px;
+  font-family: 'Roboto Slab', serif;
 }
+
 
 
 h2 {
-  display: flex;
-  background-color: aqua;
   text-align: center;
   margin-left: 40px;
   height: 50px;
   width: 50px;
+  font-family: 'Roboto Slab', serif;
 }
 
 
@@ -304,3 +304,6 @@ h2 {
   background-position: bottom;
 }
 
+p {
+  font-family: 'Roboto Slab', serif;
+}

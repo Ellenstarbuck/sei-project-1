@@ -6,14 +6,17 @@ function init() {
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
   const timer = document.querySelector('.timer')
-  const frogLive1 = document.querySelector('body > div > div > div:nth-child(1)')
-  const frogLive2 = document.querySelector('body > div > div > div:nth-child(2)')
-  const frogLive3 = document.querySelector('body > div > div > div:nth-child(3)')
-
+  const frogLive1 = document.querySelector('body > div > div > div:nth-child(2)')
+  const frogLive2 = document.querySelector('body > div > div > div:nth-child(3)')
+  const frogLive3 = document.querySelector('body > div > div > div:nth-child(4)')
+  const frogSafe1 = document.querySelector('body > div > div > div:nth-child(8)')
+  const frogSafe2 = document.querySelector('body > div > div > div:nth-child(9)')
+  const frogSafe3 = document.querySelector('body > div > div > div:nth-child(10)')
+  const frogSafe4 = document.querySelector('body > div > div > div:nth-child(11)')
 
   const frogLives = [frogLive1, frogLive2, frogLive3]
   
-  //document.querySelector("body > div > div > div:nth-child(1)")
+  const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
   
   //timers
   let obstacleTimerId = null 
@@ -31,6 +34,7 @@ function init() {
   let gameRunning = false
   let lives = 3
   let grass = 0
+  let frogSaved = 4
   
   
   
@@ -389,8 +393,8 @@ function init() {
     lilypadLad.forEach(lilypadbit => {
       if (lilypadbit) {
         squares[playerIndex].classList.add('player2')
-        looseLife() 
-        if (lives === -1) {
+        frogWin() 
+        if (frogSaved === 0) {
           reset()
         }
         
@@ -399,7 +403,10 @@ function init() {
     })  
   }
 
+  
+
   //landing on grass and dying
+  //if frog lands
 
   function grassDeath() {
     if (squares[playerIndex].classList.contains('grass')) {
@@ -410,10 +417,23 @@ function init() {
     }
   } 
 
+  function frogWin() {
+    squares[playerIndex].classList.remove('player')
+    safeFrog[frogSaved - 1].classList.remove('safe')
+    frogSaved--
+    playerIndex = Math.floor((width * width) - (width / 2))
+    squares[playerIndex].classList.add('player')
+    if (frogSaved === 0) {
+      reset()
+    }  
+  }
+
+
   //dying and loosing lives
 
   function looseLife() {
     squares[playerIndex].classList.remove('player')
+    console.log('life')
     frogLives[lives - 1].classList.remove('life')
     lives--
     playerIndex = Math.floor((width * width) - (width / 2))
@@ -441,6 +461,11 @@ function init() {
     squares[lilypad + 2].classList.remove('player2')
     squares[lilypad + 4].classList.remove('player2')
     squares[lilypad + 6].classList.remove('player2')
+    frogSaved = 4
+    safeFrog[0].classList.add('safe')
+    safeFrog[1].classList.add('safe')
+    safeFrog[2].classList.add('safe')
+    safeFrog[3].classList.add('safe')
     lives = 3
     frogLives[0].classList.add('life')
     frogLives[1].classList.add('life')
