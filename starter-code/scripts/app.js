@@ -13,7 +13,6 @@ function init() {
   const frogSafe2 = document.querySelector('body > div > div > div:nth-child(9)')
   const frogSafe3 = document.querySelector('body > div > div > div:nth-child(10)')
   const frogSafe4 = document.querySelector('body > div > div > div:nth-child(11)')
-
   const frogLives = [frogLive1, frogLive2, frogLive3]
   
   const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
@@ -35,6 +34,9 @@ function init() {
   let lives = 3
   let grass = 0
   let frogSaved = 4
+  
+
+
   
   
   
@@ -438,15 +440,22 @@ function init() {
   }
 
 
+
   //dying and loosing lives
 
   function looseLife() {
+    squares[playerIndex].classList.add('deadFrog')
     squares[playerIndex].classList.remove('player')
-    console.log('life')
-    frogLives[lives - 1].classList.remove('life')
-    lives--
-    playerIndex = Math.floor((width * width) - (width / 2))
-    squares[playerIndex].classList.add('player')
+    setTimeout(wait, 500)
+    function wait() {
+      squares[playerIndex].classList.remove('deadFrog')
+      squares[playerIndex].classList.remove('player')
+      frogLives[lives - 1].classList.remove('life')
+      lives--
+      playerIndex = Math.floor((width * width) - (width / 2))
+      squares[playerIndex].classList.add('player')
+    }
+
     if (lives === -1) {
       reset()
     }  
@@ -479,6 +488,7 @@ function init() {
     frogLives[0].classList.add('life')
     frogLives[1].classList.add('life')
     frogLives[2].classList.add('life')
+    squares.forEach(square => square.classList.remove('deadFrog'))
     squares[playerIndex].classList.remove('player')
     playerIndex = Math.floor((width * width) - (width / 2))
     squares[playerIndex].classList.add('player')

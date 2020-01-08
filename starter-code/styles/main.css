@@ -303,10 +303,7 @@ h2 {
 
 
 .deadFrog {
-  background-image: url('../assets/deadfrogger.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+  content: url('../assets/deadFrog.png');
 }
 
 p {
