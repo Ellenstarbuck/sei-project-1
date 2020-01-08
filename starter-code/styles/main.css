@@ -9,15 +9,13 @@ html, body {
 }
 
 main {
-  max-width: 600px;
-  
-  
+  max-width: 600px;  
 }
 
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 30px;
 }  
 
 div.grid {
@@ -232,7 +230,7 @@ div.grid-item.shark4C {
 
 
 div.grid-item.lilypad {
-  background-image: url('../assets/Lilypad.jpg');
+  background-image: url('../assets/sickFrog.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   
@@ -254,7 +252,14 @@ button {
   font-family: 'Roboto Slab', serif;
 }
 
+h1 {
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+  text-align: center;
+  border: 0;
+  padding: 0;
 
+}
 
 h2 {
   text-align: center;

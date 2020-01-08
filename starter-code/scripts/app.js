@@ -147,6 +147,7 @@ function init() {
   const car6 = new Car(7,84, 'car2')
   const car7 = new Car(8, 91, 'car3')
   const car8 = new Car(9, 106, 'car4')
+  const car9 = new Car(6, 72, 'car')
 
   //water
   const waterArray = squares.slice(11,55)
