@@ -14,6 +14,8 @@ function init() {
   const frogSafe3 = document.querySelector('body > div > div > div:nth-child(10)')
   const frogSafe4 = document.querySelector('body > div > div > div:nth-child(11)')
   const frogLives = [frogLive1, frogLive2, frogLive3]
+  const firstStart = document.querySelector('button.newStart')
+  const container = document.querySelector('.container')
   
   const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
   
@@ -454,11 +456,18 @@ function init() {
       lives--
       playerIndex = Math.floor((width * width) - (width / 2))
       squares[playerIndex].classList.add('player')
-    }
 
-    if (lives === -1) {
-      reset()
-    }  
+      if (lives === -1) {
+        reset()
+      }  
+    }
+  }
+    
+  function firstPlay() {
+    firstStart.style.display = 'none'
+    container.style.display = 'flex'
+    play()
+
   }
 
   //start the game
@@ -470,6 +479,7 @@ function init() {
       timerId = setInterval(startTimer,1000)
       startBtn.style.display = 'none' 
       resetBtn.style.display = 'block'
+      
 
     }
   }
@@ -519,6 +529,7 @@ function init() {
   startBtn.addEventListener('click', play)
   console.log(startBtn)
   resetBtn.addEventListener('click', reset)
+  firstStart.addEventListener('click', firstPlay)
 
   
 
