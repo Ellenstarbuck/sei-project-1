@@ -5,6 +5,8 @@ function init() {
   const squares = []
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
+  const playAgainbtn = document.querySelector('button.playAgain')
+  const endGamebtn = document.querySelector('button.endGame')
   const timer = document.querySelector('.timer')
   const frogLive1 = document.querySelector('body > div > div > div:nth-child(2)')
   const frogLive2 = document.querySelector('body > div > div > div:nth-child(3)')
@@ -18,6 +20,8 @@ function init() {
   const firstStart = document.querySelector('button.newStart')
   const container2 = document.querySelector('.container2')
   const container = document.querySelector('.container')
+  const container4 = document.querySelector('.container4')
+  const container5 = document.querySelector('.container5')
   
   const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
   
@@ -111,40 +115,40 @@ function init() {
 
   function obstacleTimer() {
     if (gameRunning === true) {
-    checkShark()
-    car1.moveRight()
-    car2.moveLeft()
-    car3.moveRight()
-    car4.moveLeft()
-    car5.moveRight()
-    car6.moveLeft()
-    car7.moveRight()
-    car8.moveLeft()
-    car9.moveRight()
-    car10.moveLeft()
-    car11.moveRight()
-    car12.moveLeft()
-    sharkA.moveLeft()
-    sharkB.moveLeft()
-    sharkC.moveLeft()
-    shark2A.moveRight()
-    shark2B.moveRight()
-    shark2C.moveRight()
-    shark3A.moveLeft()
-    shark3B.moveLeft()
-    shark3C.moveLeft()
-    shark4A.moveRight()
-    shark4B.moveRight()
-    shark4C.moveRight()
-    crocA.moveLeft()
-    crocB.moveLeft()
-    croc2B.moveRight()
-    croc2A.moveRight()
-    croc3A.moveLeft()
-    croc3B.moveLeft()
-    croc4A.moveRight()
-    croc4B.moveRight()
-    checkCar()
+      checkShark()
+      car1.moveRight()
+      car2.moveLeft()
+      car3.moveRight()
+      car4.moveLeft()
+      car5.moveRight()
+      car6.moveLeft()
+      car7.moveRight()
+      car8.moveLeft()
+      car9.moveRight()
+      car10.moveLeft()
+      car11.moveRight()
+      car12.moveLeft()
+      sharkA.moveLeft()
+      sharkB.moveLeft()
+      sharkC.moveLeft()
+      shark2A.moveRight()
+      shark2B.moveRight()
+      shark2C.moveRight()
+      shark3A.moveLeft()
+      shark3B.moveLeft()
+      shark3C.moveLeft()
+      shark4A.moveRight()
+      shark4B.moveRight()
+      shark4C.moveRight()
+      crocA.moveLeft()
+      crocB.moveLeft()
+      croc2B.moveRight()
+      croc2A.moveRight()
+      croc3A.moveLeft()
+      croc3B.moveLeft()
+      croc4A.moveRight()
+      croc4B.moveRight()
+      checkCar()
     }
   }
 
@@ -409,7 +413,7 @@ function init() {
         squares[playerIndex].classList.add('player2')
         frogWin() 
         if (frogSaved === 0) {
-          reset()
+          frogwinpage()
         }
         
       }
@@ -438,10 +442,33 @@ function init() {
     playerIndex = Math.floor((width * width) - (width / 2))
     squares[playerIndex].classList.add('player')
     if (frogSaved === 0) {
-      reset()
+      frogwinpage()
+      
+      //reveal a hidden page with a button which says 'do you want to play again?
+      //create two click events - one for yes
+      //one for no.
+      //if they click yes then reset
+      //if they click no then go back to firstplay()
+      //reset()
+  
     }  
   }
 
+  //landing page for win
+
+  function frogwinpage() {
+    container.style.display = 'none'
+    container4.style.display = 'block'
+    container5.style.display = 'block'
+  }
+
+  function endGame() {
+    firstStart.style.display = 'block'
+    container2.style.display = 'block'
+    container4.style.display = 'none'
+    container5.style.display = 'none'
+
+  }
 
 
   //dying and loosing lives
@@ -478,7 +505,7 @@ function init() {
   //start the game
   function play() {
     if (gameRunning === false) {
-      obstacleTimerId = setInterval(obstacleTimer, 500)
+      obstacleTimerId = setInterval(obstacleTimer, 1000)
       gameRunning = true
       startTimer()
       timerId = setInterval(startTimer,1000)
@@ -532,10 +559,13 @@ function init() {
 
   //start button and reset button
   startBtn.addEventListener('click', play)
-  console.log(startBtn)
   resetBtn.addEventListener('click', reset)
   firstStart.addEventListener('click', firstPlay)
 
+  //end game and play again button
+
+  playAgainbtn.addEventListener('click', play)
+  endGamebtn.addEventListener('click', endGame)
   
 
 

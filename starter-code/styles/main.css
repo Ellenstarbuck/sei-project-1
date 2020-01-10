@@ -43,6 +43,50 @@ main {
   margin-left: 198px;
 }
 
+.container4 {
+  height: 600px;
+  width: 700px;
+  display: flex;
+  margin: 10px 300px;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Roboto Slab', serif;
+  background-image: url('../assets/Frogbackground.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: none;
+}
+
+.container5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 320px;
+  height: 280px;
+  margin-left: 198px;
+  display: none
+}
+
+button.playAgain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  margin: 0px 70px 0px 125px;
+  border-radius: 4px;
+}
+button.endGame {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  margin: 0px 70px 0px 125px;
+  border-radius: 4px;
+
+}
+
 h3 {
   font-family: 'Raleway', sans-serif;
   text-align: center;
@@ -365,7 +409,7 @@ h2 {
 .timer {
   font-size: 30px;
   font-family: 'Raleway', sans-serif;
-  background-color: white;
+
 
 
 }
