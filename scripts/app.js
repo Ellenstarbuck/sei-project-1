@@ -15,9 +15,6 @@ function init() {
   const frogSafe4 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(5)')
   const frogLives = [frogLive1, frogLive2, frogLive3]
 
-  //sounds
-  const cheering = document.querySelector('#cheers')
-  const cheeringGang = document.querySelector('#cheersGroup')
   
   //landing page
   const container2 = document.querySelector('.container2')
@@ -392,7 +389,6 @@ function init() {
         squares[playerIndex].classList.add('player2')
         frogWin() 
         if (frogSaved === 0) {
-          cheeringSound()
           frogwinpage()
         }
         
@@ -416,7 +412,6 @@ function init() {
 
   //if the player gets four frogs across safely
   function frogWin() {
-    cheeringSound()
     squares[playerIndex].classList.remove('player')
     safeFrog[frogSaved - 1].classList.remove('safe') 
     frogSaved--
@@ -430,7 +425,6 @@ function init() {
 
   //landing page for win
   function frogwinpage() {
-    cheeringGroup()
     container.style.display = 'none'
     container4.style.display = 'block'
     container5.style.display = 'block'
@@ -465,20 +459,6 @@ function init() {
     container5.style.display = 'none'
     container.style.display = 'flex'
     reset()
-  }
-
-  //sound functions
-  //saving a frog
-  function cheeringSound() {
-    cheering.src = 'assets/cheering.mp3'
-    cheering.play()
-    
-  }
-
-  //winning the game
-  function cheeringGroup() {
-    cheeringGang.src = 'assets/Cheeringgroup.mp3'
-    cheeringGang.play()
   }
 
 
