@@ -6,7 +6,7 @@ function init() {
   const startBtn = document.querySelector('button.start')
   const resetBtn = document.querySelector('button.reset')
   const playAgainbtn = document.querySelector('button.playAgain')
-  const endGamebtn = document.querySelector('button.endGame')
+  const playAgainbtn2 = document.querySelector('button.playAgain2')
   const timer = document.querySelector('.timer')
   const frogLive1 = document.querySelector('body > div > div > div:nth-child(2)')
   const frogLive2 = document.querySelector('body > div > div > div:nth-child(3)')
@@ -453,20 +453,9 @@ function init() {
     container.style.display = 'none'
     container4.style.display = 'block'
     container5.style.display = 'block'
-    finishGame()
-    gameRunning = false
-    timerId = null 
-    timeRemaining = 60
-    timer.innerHTML = timeRemaining
   }
 
-  function endGame() {
-    firstStart.style.display = 'block'
-    container2.style.display = 'block'
-    container4.style.display = 'none'
-    container5.style.display = 'none'
-
-  }
+  
 
 
   //dying and loosing lives
@@ -493,7 +482,8 @@ function init() {
   function playAgain() {
     container4.style.display = 'none'
     container5.style.display = 'none'
-    firstPlay()
+    container.style.display = 'flex'
+    reset()
   }
 
 
@@ -570,7 +560,8 @@ function init() {
   //end game and play again button
 
   playAgainbtn.addEventListener('click', playAgain)
-  endGamebtn.addEventListener('click', endGame)
+  playAgainbtn2.addEventListener('click', playAgain)
+  
   
 
 

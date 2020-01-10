@@ -76,13 +76,13 @@ button.playAgain {
   margin: 0px 70px 0px 125px;
   border-radius: 4px;
 }
-button.endGame {
+button.playAgain2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   text-align: center;
-  height: 30px;
-  width: 80px;
-  margin: 0px 70px 0px 125px;
+  height: 75px;
+  width: 100px;
+  margin: 10px 0px 0px 120px;
   border-radius: 4px;
 
 }
