@@ -467,7 +467,7 @@ function init() {
     firstStart.style.display = 'none'
     container.style.display = 'flex'
     container2.style.display = 'none'
-    document.body.style.backgroundColor = '#f1f7e4'
+    document.body.style.backgroundColor = '#d1f28f'
     play()
 
   }
