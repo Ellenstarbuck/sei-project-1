@@ -3,11 +3,9 @@ function init() {
   //dom variables
   const grid = document.querySelector(' .grid')
   const squares = []
-  const startBtn = document.querySelector('button.start')
-  const resetBtn = document.querySelector('button.reset')
-  const playAgainbtn = document.querySelector('button.playAgain')
-  const playAgainbtn2 = document.querySelector('button.playAgain2')
   const timer = document.querySelector('.timer')
+
+  //lives and safe frogs
   const frogLive1 = document.querySelector('body > div > div > div:nth-child(2)')
   const frogLive2 = document.querySelector('body > div > div > div:nth-child(3)')
   const frogLive3 = document.querySelector('body > div > div > div:nth-child(4)')
@@ -15,19 +13,30 @@ function init() {
   const frogSafe2 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(3)')
   const frogSafe3 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(4)')
   const frogSafe4 = document.querySelector('body > div.container > div.livebox > div.safebox > div:nth-child(5)')
-  
   const frogLives = [frogLive1, frogLive2, frogLive3]
-  const firstStart = document.querySelector('button.newStart')
+
+  //sounds
+  const cheering = document.querySelector('#cheers')
+  const cheeringGang = document.querySelector('#cheersGroup')
+  
+  //landing page
   const container2 = document.querySelector('.container2')
   const container = document.querySelector('.container')
+  //end page
   const container4 = document.querySelector('.container4')
   const container5 = document.querySelector('.container5')
   
   const safeFrog = [frogSafe1, frogSafe2, frogSafe3, frogSafe4]
+
+  //buttons
+  const firstStart = document.querySelector('button.newStart')
+  const startBtn = document.querySelector('button.start')
+  const resetBtn = document.querySelector('button.reset')
+  const playAgainbtn = document.querySelector('button.playAgain')
+  const playAgainbtn2 = document.querySelector('button.playAgain2')
   
   //timers
   let obstacleTimerId = null 
-
   let timerId = null 
   let timeRemaining = 60
 
@@ -35,23 +44,14 @@ function init() {
   //game variables
   const width = 11
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
-  //let carStart = 88
   let logStart = 11
   let lilypad = 2
   let gameRunning = false
   let lives = 3
   let grass = 0
   let frogSaved = 4
-  
 
-
-  
-  
-  
-  
-  
-
-
+  //building the grid
   Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
     const square = document.createElement('div') //this makes 121 divs
     square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' (which has already been styled in css)
@@ -59,12 +59,7 @@ function init() {
     grid.appendChild(square) //'this attaches them to the square
   }) 
   
-  //function
-
-  
-
-
-  //objects
+  //object factory!
 
   class Obstacle {
     constructor (line, current, image) {
@@ -113,6 +108,8 @@ function init() {
 
   //functions
 
+  //checks where the obstacles are and moves them
+
   function obstacleTimer() {
     if (gameRunning === true) {
       checkShark()
@@ -152,6 +149,8 @@ function init() {
     }
   }
 
+  //obstacles
+  //cars
   const car1 = new Car(6, 66, 'car')
   const car2 = new Car(7, 87, 'car2')
   const car3 = new Car(8, 88, 'car3')
@@ -170,7 +169,7 @@ function init() {
   const waterArray = squares.slice(11,55)
   waterArray.forEach(square => square.classList.add('water'))
 
-  //logs
+  //sharks
   //shark one
   const sharkA = new Log(1, 11, 'sharkA')
   const sharkB = new Log(1, 12,'sharkB')
@@ -201,7 +200,7 @@ function init() {
   const croc4B = new Log(4, 49, 'crock4A')
   
 
-  //road
+  //roads
   const roadTopArray = squares.slice(66,77)
   roadTopArray.forEach(square => square.classList.add('roadTop'))
 
@@ -215,7 +214,6 @@ function init() {
   roadBottomArray.forEach(square => square.classList.add('roadBottom'))
   
   //grass
-
   squares[grass].classList.add('grass')
   squares[grass + 1].classList.add('grass')
   squares[grass + 3].classList.add('grass')
@@ -228,26 +226,11 @@ function init() {
   //tarmac
   const tarmacArray = squares.slice(110,121)
   const tarmacMiddleArray = squares.slice(55,66)
-
   tarmacArray.forEach(square => square.classList.add('tarmac'))
   tarmacMiddleArray.forEach(square => square.classList.add('tarmac'))
 
-
-
-
-
-  
- 
   //place the player at the starting point when the grid has been built
   squares[playerIndex].classList.add('player')
-
-  //places the car on the grid
-  //squares[carStart].classList.add('car')
-
-  //places the log on the grid
-  //squares[logStart].classList.add('log')
-  //squares[logStart + 1].classList.add('log')
-  //squares[logStart + 2].classList.add('log')
 
   //places the lilypad's on the grid
   squares[lilypad].classList.add('lilypad')
@@ -255,8 +238,6 @@ function init() {
   squares[lilypad + 4].classList.add('lilypad')
   squares[lilypad + 6].classList.add('lilypad')
 
-  
-  
 
   //THIS FUNCTION LETS THE PLAYER MOVE THE FROG
   function handleKeyDown(e) {
@@ -306,11 +287,8 @@ function init() {
   }
 
 
-  
-  //checks the class of the square the frog is in
-
+  //checks if the player is in a square with a car and if so HE DIES
   function checkCar() {
-    //check if the game is in play
     const activeCars = squares[playerIndex].classList.contains('car')
     const activeCars2 = squares[playerIndex].classList.contains('car2')
     const activeCars3 = squares[playerIndex].classList.contains('car3')
@@ -328,6 +306,7 @@ function init() {
    
   }
 
+  //checks if the player is in a square with water, and if so HE DIES
   function checkWater() {
     if (squares[playerIndex].classList.contains('water') && squares[playerIndex].classList.length < 4){
       looseLife()
@@ -337,7 +316,7 @@ function init() {
     }
   }
 
-
+  //checks if the player is in a square with a shark, and if so HE DIES
   function checkShark() {
     const sharkA = squares[playerIndex].classList.contains('sharkA')
     const sharkB = squares[playerIndex].classList.contains('sharkB')
@@ -400,7 +379,7 @@ function init() {
 
   
 
-  //keep the frog on the lilypad
+  //keeps the safe frogs on the lilypad
 
   function checkLilypad(){
     const lilypadA = squares[playerIndex].classList.contains('lilypad')
@@ -413,6 +392,7 @@ function init() {
         squares[playerIndex].classList.add('player2')
         frogWin() 
         if (frogSaved === 0) {
+          cheeringSound()
           frogwinpage()
         }
         
@@ -424,7 +404,6 @@ function init() {
   
 
   //landing on grass and dying
-  //if frog lands
 
   function grassDeath() {
     if (squares[playerIndex].classList.contains('grass')) {
@@ -435,7 +414,9 @@ function init() {
     }
   } 
 
+  //if the player gets four frogs across safely
   function frogWin() {
+    cheeringSound()
     squares[playerIndex].classList.remove('player')
     safeFrog[frogSaved - 1].classList.remove('safe') 
     frogSaved--
@@ -448,8 +429,8 @@ function init() {
   }
 
   //landing page for win
-
   function frogwinpage() {
+    cheeringGroup()
     container.style.display = 'none'
     container4.style.display = 'block'
     container5.style.display = 'block'
@@ -459,7 +440,6 @@ function init() {
 
 
   //dying and loosing lives
-
   function looseLife() {
     gameRunning = false
     squares[playerIndex].classList.remove('player')
@@ -479,6 +459,7 @@ function init() {
     }
   }
     
+  //player clicks on the option to play again after they win
   function playAgain() {
     container4.style.display = 'none'
     container5.style.display = 'none'
@@ -486,8 +467,22 @@ function init() {
     reset()
   }
 
+  //sound functions
+  //saving a frog
+  function cheeringSound() {
+    cheering.src = 'assets/cheering.mp3'
+    cheering.play()
+    
+  }
+
+  //winning the game
+  function cheeringGroup() {
+    cheeringGang.src = 'assets/Cheeringgroup.mp3'
+    cheeringGang.play()
+  }
 
 
+  //makes the landing page disapeer and the game start
   function firstPlay() {  
     firstStart.style.display = 'none'
     container.style.display = 'flex'
@@ -497,10 +492,11 @@ function init() {
 
   }
 
-  //start the game
+  
+  //starts the game
   function play() {
     if (gameRunning === false) {
-      obstacleTimerId = setInterval(obstacleTimer, 1000)
+      obstacleTimerId = setInterval(obstacleTimer, 500)
       gameRunning = true
       startTimer()
       timerId = setInterval(startTimer,1000)
@@ -510,7 +506,7 @@ function init() {
 
     }
   }
-  //reset the game
+  //resets the game
   function reset() {
     squares[lilypad].classList.remove('player2')
     squares[lilypad + 2].classList.remove('player2')
@@ -537,9 +533,6 @@ function init() {
     timer.innerHTML = timeRemaining
     startBtn.style.display = 'block' 
     resetBtn.style.display = 'none'
-
-    //needs to move player back to the start
-    //needs to reset the timer 
   }
 
   function finishGame() {
