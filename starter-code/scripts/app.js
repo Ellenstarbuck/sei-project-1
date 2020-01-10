@@ -443,13 +443,6 @@ function init() {
     squares[playerIndex].classList.add('player')
     if (frogSaved === 0) {
       frogwinpage()
-      
-      //reveal a hidden page with a button which says 'do you want to play again?
-      //create two click events - one for yes
-      //one for no.
-      //if they click yes then reset
-      //if they click no then go back to firstplay()
-      //reset()
   
     }  
   }
@@ -460,6 +453,7 @@ function init() {
     container.style.display = 'none'
     container4.style.display = 'block'
     container5.style.display = 'block'
+    timerId = null 
   }
 
   function endGame() {
@@ -492,8 +486,15 @@ function init() {
     }
   }
     
-  function firstPlay() {
-    
+  function playAgain() {
+    container4.style.display = 'none'
+    container5.style.display = 'none'
+    firstPlay()
+  }
+
+
+
+  function firstPlay() {  
     firstStart.style.display = 'none'
     container.style.display = 'flex'
     container2.style.display = 'none'
@@ -564,7 +565,7 @@ function init() {
 
   //end game and play again button
 
-  playAgainbtn.addEventListener('click', play)
+  playAgainbtn.addEventListener('click', playAgain)
   endGamebtn.addEventListener('click', endGame)
   
 
