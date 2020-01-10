@@ -453,7 +453,11 @@ function init() {
     container.style.display = 'none'
     container4.style.display = 'block'
     container5.style.display = 'block'
+    finishGame()
+    gameRunning = false
     timerId = null 
+    timeRemaining = 60
+    timer.innerHTML = timeRemaining
   }
 
   function endGame() {
