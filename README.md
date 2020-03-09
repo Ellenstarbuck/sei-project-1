@@ -1,14 +1,14 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Software Engineneering Immersive: Project 1
 This was my first project of the General Assembly Software Engineering Immersive course.
 
-<h1> FROGGER M.D <h1>
+<h2> FROGGER M.D <h2>
 
-This project is a browser game of Frogger built with Vanilla Javascript.
-It has been built with HTML, CSS and Javascript.
+<p>This project is a browser game of Frogger built with Vanilla Javascript.
+It has been built with HTML, CSS and Javascript.<p>
 
 <h2> PLAYING INSTRUCTIONS <h2>
 
-<h3> The player has to get four ‘frog doctors’ safely across the grid to the lilypads on the other side before the time runs out. There are several obstacles in the way including fast moving monsters. If the player runs into, or gets hit by a monster they loose a life. They can ride safely on crocodiles and sharks, but if they fall in the water they loose a life. They also loose a life if they land on the grass instead of the lilypad. The player has four lives.  <h3>
+The player has to get four ‘frog doctors’ safely across the grid to the lilypads on the other side before the time runs out. There are several obstacles in the way including fast moving monsters. If the player runs into, or gets hit by a monster they loose a life. They can ride safely on crocodiles and sharks, but if they fall in the water they loose a life. They also loose a life if they land on the grass instead of the lilypad. The player has four lives.  
 
 <h2> DEPLOYMENT <h2>
 
