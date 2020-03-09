@@ -1,4 +1,4 @@
-console.log('hello')
+
 function init() {
   //dom variables
   const grid = document.querySelector(' .grid')
@@ -41,23 +41,24 @@ function init() {
   //game variables
   const width = 11
   let playerIndex = Math.floor((width * width) - (width / 2))//NEED TO MIDDLE OF BOARD AT BOTTOM
-  let logStart = 11
-  let lilypad = 2
+  const lilypad = 2
   let gameRunning = false
   let lives = 3
-  let grass = 0
+  const grass = 0
   let frogSaved = 4
 
   //building the grid
-  Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, of empty strings
+  Array(width * width).join('.').split('.').forEach(() => { //this makes an empty array with 121 items in it, 
+    //of empty strings
     const square = document.createElement('div') //this makes 121 divs
-    square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' (which has already been styled in css)
-    squares.push(square) //push squares into the array so that we can manipulate each square individually as we know there index number
+    square.classList.add('grid-item') //this gives the divs the class list of 'grid-item' 
+    //(which has already been styled in css)
+    squares.push(square) //push squares into the array so that we can manipulate each square individually 
+    //as we know there index number
     grid.appendChild(square) //'this attaches them to the square
   }) 
   
   //object factory!
-
   class Obstacle {
     constructor (line, current, image) {
       this.line = line
