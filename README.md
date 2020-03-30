@@ -45,9 +45,13 @@ I added in water and lily pads using slice to make a new array out of the origin
 
 **<h2> CHALLENGES </h2>**
 
-I had a few issues with adding and removing the ‘dead frog’ class when the player got hit by a car. I had several different timers and functions running in tandem - one for the game, one for the obstacles, once checking the frog. I added in a timeout timer to delay the adding and removal of the dead frog class so it could be seen on screen. However the different timer functions meant  several checks were all taking place at once. The alive frog class was then being added back in after the dead frog was removed. I ended up moving functions around, in order to control the order the obstacles were checked and the 'game running' boolean also gave me more control. 
+I had a few issues with adding and removing the ‘dead frog’ class when the player got hit by a car. I had several different timers and functions running in tandem - one for the game, one for the obstacles, once checking the frog. I added in a timeout timer to delay the adding and removal of the dead frog class so it could be seen on screen. However the different timer functions meant several checks were all taking place at once. The alive frog class was then being added back in after the dead frog was removed. I ended up moving functions around, in order to control the order the obstacles were checked and the 'game running' boolean also gave me more control. 
 
 I had some issues with the ‘lives’ and ‘safe frogs’ boxes, as I was added and removing their classes to make them disappear depending on whether the frog made it to a lily pad or was hit by a car. Unfortunately this meant the size of the box they lived in was shrinking and moving, as they were removed. I realise that I should have made them appear and disappear using visibility: hidden, which would have kept them in their containers but they would not have been seen. 
+
+**<h2> WINS & KEY LEARNINGS </h2>**
+
+I was able to juggle several conflicting 'event listeners' and get them to work in tamden, as well as shift the timers so that it was playable. I was also pleased with being able to add my own creative spin on the game by designing my own pixels. My key learning was to be better with concise planning - to plan for all possibilities and final results rather than building the game bit by bit, which can ultimately lead to conflicting code later on down the line. 
 
 **<h2> FUTURE IMPROVEMENTS </h2>**
 
